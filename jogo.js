@@ -2,7 +2,7 @@ var largura = 0
 var altura = 0
 var vida = 1
 var tempo = 50
-var criaMosquitoTempo = 1500 // valor padrão
+var criaMosquitoTempo = 0 // valor padrão
 
 // obter nível da URL
 var nivel = new URLSearchParams(window.location.search).get('nivel')
@@ -11,10 +11,10 @@ switch (nivel) {
         criaMosquitoTempo = 2000
         break
     case 'medio':
-        criaMosquitoTempo = 1000
+        criaMosquitoTempo = 1400
         break
     case 'dificil':
-        criaMosquitoTempo = 790
+        criaMosquitoTempo = 950
         break
     default:
         alert('Nível inválido!')
@@ -87,11 +87,11 @@ function posicaoRandomica() {
 
         var borboleta = document.createElement('img');
         borboleta.src = 'imagens/borboleta.png'; // Adicione essa imagem na pasta
-        borboleta.className = 'borboleta';
+        borboleta.className = 'borboleta ' + ladoAleatorio();
         borboleta.style.left = posicaoBX + 'px';
         borboleta.style.top = posicaoBY + 'px';
         borboleta.style.position = 'absolute';
-         borboleta.style.width = '150px'; // Ajuste o tamanho da borboleta
+        borboleta.style.width = '150px'; 
         borboleta.style.height = '150px';  
         borboleta.id = 'borboleta';
         borboleta.onclick = function () {
@@ -116,6 +116,7 @@ function tamanhoAleatorio() {
     var classe = Math.floor(Math.random() * 3)
     return ['mosquito1', 'mosquito2', 'mosquito3'][classe]
 }
+
 
 function ladoAleatorio() {
     var classe = Math.floor(Math.random() * 2)
