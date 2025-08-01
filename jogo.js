@@ -14,7 +14,7 @@ switch (nivel) {
         criaMosquitoTempo = 1000
         break
     case 'dificil':
-        criaMosquitoTempo = 700
+        criaMosquitoTempo = 790
         break
     default:
         alert('Nível inválido!')
@@ -43,6 +43,12 @@ var cronometro = setInterval(function () {
 
 
 function posicaoRandomica() {
+
+    if (document.getElementById('borboleta')) {
+        document.getElementById('borboleta').remove();
+    }
+
+
     if (document.getElementById('mosquito')) {
         document.getElementById('mosquito').remove()
 
@@ -73,8 +79,37 @@ function posicaoRandomica() {
     mosquito.onclick = function () {
         this.remove()
     }
+    if ((nivel === 'medio' || nivel === 'dificil') && Math.random() < 0.4) {
+        var posicaoBX = Math.floor(Math.random() * largura) - 200;
+        var posicaoBY = Math.floor(Math.random() * altura) - 200;
+        posicaoBX = Math.max(0, posicaoBX);
+        posicaoBY = Math.max(0, posicaoBY);
 
-    document.body.appendChild(mosquito)
+        var borboleta = document.createElement('img');
+        borboleta.src = 'imagens/borboleta.png'; // Adicione essa imagem na pasta
+        borboleta.className = 'borboleta';
+        borboleta.style.left = posicaoBX + 'px';
+        borboleta.style.top = posicaoBY + 'px';
+        borboleta.style.position = 'absolute';
+         borboleta.style.width = '150px'; // Ajuste o tamanho da borboleta
+        borboleta.style.height = '150px';  
+        borboleta.id = 'borboleta';
+        borboleta.onclick = function () {
+            this.remove();
+            var coracao = document.getElementById('v' + vida);
+            if (coracao) {
+                coracao.src = "imagens/coracao_vazio.png";
+            }
+            vida++;
+            if (vida > 3) {
+                window.location.href = 'game_over.html';
+            }
+        };
+        document.body.appendChild(borboleta);
+    }else {
+       document.body.appendChild(mosquito)
+    }
+    
 }
 
 function tamanhoAleatorio() {
@@ -88,3 +123,10 @@ function ladoAleatorio() {
 }
 
 var criaMosquito = setInterval(posicaoRandomica, criaMosquitoTempo)
+
+
+
+
+ 
+
+
