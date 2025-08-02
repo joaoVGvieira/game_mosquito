@@ -11,10 +11,10 @@ switch (nivel) {
         criaMosquitoTempo = 2000
         break
     case 'medio':
-        criaMosquitoTempo = 1400
+        criaMosquitoTempo = 1500
         break
     case 'dificil':
-        criaMosquitoTempo = 1100
+        criaMosquitoTempo = 1300
         break
     default:
         alert('Nível inválido!')
@@ -63,8 +63,8 @@ function posicaoRandomica() {
         }
     }
 
-    var posicaoX = Math.floor(Math.random() * largura) - 90
-    var posicaoY = Math.floor(Math.random() * altura) - 90
+    var posicaoX = Math.floor(Math.random() * largura) - 150
+    var posicaoY = Math.floor(Math.random() * altura) - 150
 
     posicaoX = Math.max(0, posicaoX)
     posicaoY = Math.max(0, posicaoY)
