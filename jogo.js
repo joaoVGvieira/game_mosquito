@@ -14,7 +14,7 @@ switch (nivel) {
         criaMosquitoTempo = 1400
         break
     case 'dificil':
-        criaMosquitoTempo = 950
+        criaMosquitoTempo = 1100
         break
     default:
         alert('Nível inválido!')
